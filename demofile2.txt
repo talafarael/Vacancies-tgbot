@@ -1,0 +1,1365 @@
+
+      JavaScript / Front-End
+      
+        
+
+
+
+      Angular
+      
+    
+      React.js
+      
+    
+      Svelte
+      
+    
+      Vue.js
+      
+    
+      Markup
+      
+    
+      Fullstack
+      
+    
+      Java
+      
+    
+      C# / .NET
+      
+        
+
+
+
+      Server & Cloud
+      
+    
+      Web Apps
+      
+        
+
+
+
+      ASP.NET
+      
+    
+      Blazor
+      
+    
+      Mobile Apps
+      
+        
+
+
+
+      MAUI
+      
+    
+      Xamarin
+      
+    
+      Desktop Apps
+      
+        
+
+
+
+      WPF
+      
+    
+      WinForms
+      
+    
+      .NET Gamedev
+      
+    
+      Python
+      
+    
+      PHP
+      
+        
+
+
+
+      WordPress
+      
+    
+      Yii
+      
+    
+      Drupal
+      
+    
+      Laravel
+      
+    
+      Magento
+      
+    
+      Symfony
+      
+    
+      Node.js
+      
+    
+      iOS
+      
+    
+      Android
+      
+    
+      React Native
+      
+    
+      C / C++ / Embedded
+      
+        
+
+
+
+      C
+      
+    
+      Embedded
+      
+    
+      C++
+      
+    
+      Flutter
+      
+    
+      Golang
+      
+    
+      Ruby
+      
+    
+      Scala
+      
+    
+      Salesforce
+      
+    
+      Rust
+      
+    
+      Elixir
+      
+    
+      Kotlin
+      
+    
+      ERP Systems
+      
+        
+
+
+
+      MS Dynamics / Business Central
+      
+    
+      Odoo
+      
+    
+      SAP
+      
+    
+      QA Manual
+      
+    
+      QA Automation
+      
+    
+      Design
+      
+        
+
+
+
+      Content Design / UX writer
+      
+    
+      Graphic Design
+      
+    
+      Product Design
+      
+    
+      UI/UX
+      
+    
+      UX Research
+      
+    
+      2D/3D Artist / Illustrator
+      
+        
+
+
+
+      3D Animation
+      
+    
+      2D Artist
+      
+    
+      3D Artist
+      
+    
+      Illustrator
+      
+    
+      Motion Design
+      
+    
+      VFX Artist
+      
+    
+      Video Editor
+      
+    
+      2D Animation
+      
+    
+      Gamedev
+      
+        
+
+
+
+      Game Design
+      
+    
+      Game Developer
+      
+        
+
+
+
+      Unreal Developer
+      
+    
+      Unity Developer
+      
+    
+      Level Design
+      
+    
+      Project Manager
+      
+    
+      Product Manager
+      
+    
+      Product Owner
+      
+    
+      Delivery Manager
+      
+    
+      Scrum Master / Agile Coach
+      
+    
+      Tech Leadership
+      
+        
+
+
+
+      CTO
+      
+    
+      Software Architect
+      
+    
+      Engineering Manager
+      
+    
+      DevOps
+      
+    
+      Security
+      
+        
+
+
+
+      Information Security
+      
+    
+      Security Analyst
+      
+    
+      Penetration Tester
+      
+    
+      Sysadmin
+      
+    
+      Business Analyst
+      
+    
+      Data Science
+      
+        
+
+
+
+      ML / AI
+      
+    
+      Web Analyst
+      
+    
+      Data Analyst
+      
+    
+      Data Engineer
+      
+    
+      SQL / DBA
+      
+    
+      Technical Writing
+      
+    
+      Marketing
+      
+        
+
+
+
+      Digital Marketing
+      
+        
+
+
+
+      Digital Marketing Manager
+      
+    
+      Social Media
+      
+    
+      Content Marketing
+      
+        
+
+
+
+      Content Writer / Copywriter / Editor
+      
+    
+      Content Manager
+      
+    
+      Advertising
+      
+        
+
+
+
+      Affiliate Manager
+      
+    
+      Media Buying
+      
+    
+      PPC
+      
+    
+      Marketing Analyst
+      
+    
+      PR Manager
+      
+    
+      Sales
+      
+    
+      Lead Generation
+      
+    
+      SEO
+      
+    
+      HR
+      
+    
+      Recruiter
+      
+    
+      Customer/Technical Support
+      
+    
+      Head / Chief
+      
+        
+
+
+
+      Chief Executive Officer (CEO)
+      
+    
+      Chief Financial Officer (CFO)
+      
+    
+      Chief Information Officer (CIO)
+      
+    
+      Chief Operating Officer (COO)
+      
+    
+      Chief Product Officer (CPO)
+      
+    
+      Chief Security Officer (CSO)
+      
+    
+      Chief Marketing Officer (CMO)
+      
+    
+      Chief Business Development Officer (CBDO)
+      
+    
+      Chief Commercial Officer (CCO)
+      
+    
+      Finances
+      
+    
+      (Other)
+      
+    
+      Без досвіду
+      
+    
+      1 рік
+      
+    
+      2 роки
+      
+    
+      3 роки
+      
+    
+      4 роки
+      
+    
+      5 років
+      
+    
+      6 років
+      
+    
+      7 років
+      
+    
+      8 років
+      
+    
+      9 років
+      
+    
+      10 років та більше
+      
+    
+      Віддалена робота
+      
+    
+      Part-time
+      
+    
+      Офіс
+      
+    
+      Агенція
+      
+    
+      Аутсорс
+      
+    
+      Аутстаф
+      
+    
+      Продукт
+      
+    
+      Стартап
+      
+    
+      No English
+      
+    
+      Beginner/Elementary
+      
+    
+      Pre-Intermediate
+      
+    
+      Intermediate
+      
+    
+      Upper-Intermediate
+      
+    
+      Advanced/Fluent
+      
+    
+      Україна
+      
+    
+      Країни ЄС
+      
+    
+      Інші країни
+      
+    
+      Київ
+      
+    
+      Вінниця
+      
+    
+      Дніпро
+      
+    
+      Івано-Франківськ
+      
+    
+      Житомир
+      
+    
+      Запоріжжя
+      
+    
+      Львів
+      
+    
+      Миколаїв
+      
+    
+      Одеса
+      
+    
+      Тернопіль
+      
+    
+      Харків
+      
+    
+      Хмельницький
+      
+    
+      Черкаси
+      
+    
+      Чернігів
+      
+    
+      Чернівці
+      
+    
+      Ужгород
+      
+    
+      Болгарія
+      
+    
+      Франція
+      
+    
+      Естонія
+      
+    
+      Велика Британія
+      
+    
+      Швеція
+      
+    
+      Румунія
+      
+    
+      Мальта
+      
+    
+      Польща
+      
+    
+      Словаччина
+      
+    
+      Чехія
+      
+    
+      Австрія
+      
+    
+      Італія
+      
+    
+      Португалія
+      
+    
+      Литва
+      
+    
+      Хорватія
+      
+    
+      Нідерланди
+      
+    
+      Угорщина
+      
+    
+      Іспанія
+      
+    
+      Бельгія
+      
+    
+      Німеччина
+      
+    
+      Латвія
+      
+    
+      Україна
+      
+    
+      Польща
+      
+    
+      Кіпр
+      
+    
+      Португалія
+      
+    
+      Румунія
+      
+    
+      Іспанія
+      
+    
+      Болгарія
+      
+    
+      Чехія
+      
+    
+      Німеччина
+      
+    
+      Хорватія
+      
+    
+      Словаччина
+      
+    
+      Естонія
+      
+    
+      Сполучені Штати
+      
+    
+      Молдова
+      
+    
+      Казахстан
+      
+    
+      Литва
+      
+    
+      Грузія
+      
+    
+      Вірменія
+      
+    
+      Велика Британія
+      
+    
+      Узбекистан
+      
+    
+      Латвія
+      
+    
+      Чорногорія
+      
+    
+      Угорщина
+      
+    
+      Канада
+      
+    
+      Киргизстан
+      
+    
+      Таджикистан
+      
+    
+      Азербайджан
+      
+    
+      Бельгія
+      
+    
+      Обʼєднані Арабські Емірати
+      
+    
+      Оман
+      
+    
+      Катар
+      
+    
+      Франція
+      
+    
+      Мальта
+      
+    
+      Туреччина
+      
+    
+      Мексика
+      
+    
+      Аргентина
+      
+    
+      Бразилія
+      
+    
+      Австрія
+      
+    
+      Сербія
+      
+    
+      Вʼєтнам
+      
+    
+      Швейцарія
+      
+    
+      Віддалені острови США
+      
+    
+      Албанія
+      
+    
+      Ізраїль
+      
+    
+      Індія
+      
+    
+      Швеція
+      
+    
+      Італія
+      
+    
+      Саудівська Аравія
+      
+    
+      Сінгапур
+      
+    
+      Південно-Африканська Республіка
+      
+    
+      Болівія
+      
+    
+      Парагвай
+      
+    
+      Гватемала
+      
+    
+      Сальвадор
+      
+    
+      Аруба
+      
+    
+      Перу
+      
+    
+      Австралія
+      
+    
+      Північна Македонія
+      
+    
+      Нідерланди
+      
+    
+      Непал
+      
+    
+      Індонезія
+      
+    
+      Чилі
+      
+    
+      Китай
+      
+    
+      Віргінські Острови (США)
+      
+    
+      Пуерто-Рико
+      
+    
+      Колумбія
+      
+    
+      Коста-Рика
+      
+    
+      Вказана зарплатна вилка
+      
+    
+      Ukrainian Product 🇺🇦
+      
+    
+      MilTech 🪖
+      
+    
+      Mobilisation reservation ⏳
+      
+    JavaScript
+Angular
+React.js
+Svelte
+Vue.js
+Markup
+Fullstack
+Java
+.NET
+Dotnet Cloud
+Dotnet Web
+ASP.NET
+Blazor
+Dotnet Mobile
+MAUI
+Xamarin
+Dotnet Desktop
+WPF
+WinForms
+.NET Gamedev
+Python
+PHP
+WordPress
+Yii
+Drupal
+Laravel
+Magento
+Symfony
+Node.js
+iOS
+Android
+React Native
+C++
+C Lang
+Embedded
+CPP
+Flutter
+Golang
+Ruby
+Scala
+Salesforce
+Rust
+Elixir
+Kotlin
+ERP
+MS Dynamics
+Odoo
+SAP
+QA
+QA Automation
+Design
+Content Design
+Graphic Design
+Product Design
+UI UX
+UX Research
+Artist
+3D Animation
+2D Artist
+3D Artist
+Illustrator
+Motion Design
+VFX Artist
+Video Editor
+2D Animation
+Unity
+Game Design
+Game Developer
+Unreal Developer
+Unity Developer
+Level Design
+Project Manager
+Product Manager
+Product Owner
+Delivery Manager
+Scrum Master
+Lead
+CTO
+Architect
+Engineering Manager
+DevOps
+Security
+Information Security
+Security Analyst
+Penetration Tester
+Sysadmin
+Business Analyst
+Data Science
+ML AI
+Web Analyst
+Data Analyst
+Data Engineer
+SQL
+Technical Writing
+Marketing
+Digital Marketing
+Digital Marketing Manager
+Social Media
+Content Marketing
+Content Writing
+Content Manager
+Advertising
+Affiliate Manager
+Media Buying
+PPC
+Marketing Analyst
+PR Manager
+Sales
+Lead Generation
+SEO
+HR
+Recruiter
+Support
+Head Chief
+CEO
+CFO
+CIO
+COO
+CPO
+CSO
+CMO
+CBDO
+CCO
+Finances
+Other
+no_exp
+1y
+2y
+3y
+4y
+5y
+6y
+7y
+8y
+9y
+10y
+remote
+parttime
+office
+agency
+outsource
+outstaff
+product
+startup
+no_english
+basic
+pre
+intermediate
+upper
+fluent
+UKR
+eu
+other
+kyiv
+vinnytsia
+dnipro
+ivano-frankivsk
+zhytomyr
+zaporizhzhia
+lviv
+mykolaiv
+odesa
+ternopil
+kharkiv
+khmelnytskyi
+cherkasy
+chernihiv
+chernivtsi
+uzhhorod
+FRA
+EST
+PRT
+LTU
+MLT
+LVA
+CZE
+POL
+ITA
+ROU
+BGR
+SWE
+AUT
+DEU
+SVK
+GBR
+HRV
+NLD
+ESP
+BEL
+HUN
+UKR
+POL
+CYP
+PRT
+ROU
+ESP
+BGR
+CZE
+DEU
+HRV
+SVK
+EST
+USA
+MDA
+KAZ
+LTU
+GEO
+ARM
+GBR
+UZB
+LVA
+MNE
+HUN
+CAN
+KGZ
+TJK
+AZE
+BEL
+ARE
+OMN
+QAT
+FRA
+MLT
+TUR
+MEX
+ARG
+BRA
+AUT
+SRB
+VNM
+CHE
+UMI
+ALB
+ISR
+IND
+SWE
+ITA
+SAU
+SGP
+ZAF
+BOL
+PRY
+GTM
+SLV
+ABW
+PER
+AUS
+MKD
+NLD
+NPL
+IDN
+CHL
+CHN
+VIR
+PRI
+COL
+CRI
+has_public_salary
+ukrainian_product
+miltech
+reservation
+JavaScript
+Angular
+React.js
+Svelte
+Vue.js
+Markup
+Fullstack
+Java
+.NET
+Dotnet Cloud
+Dotnet Web
+ASP.NET
+Blazor
+Dotnet Mobile
+MAUI
+Xamarin
+Dotnet Desktop
+WPF
+WinForms
+.NET Gamedev
+Python
+PHP
+WordPress
+Yii
+Drupal
+Laravel
+Magento
+Symfony
+Node.js
+iOS
+Android
+React Native
+C++
+C Lang
+Embedded
+CPP
+Flutter
+Golang
+Ruby
+Scala
+Salesforce
+Rust
+Elixir
+Kotlin
+ERP
+MS Dynamics
+Odoo
+SAP
+QA
+QA Automation
+Design
+Content Design
+Graphic Design
+Product Design
+UI UX
+UX Research
+Artist
+3D Animation
+2D Artist
+3D Artist
+Illustrator
+Motion Design
+VFX Artist
+Video Editor
+2D Animation
+Unity
+Game Design
+Game Developer
+Unreal Developer
+Unity Developer
+Level Design
+Project Manager
+Product Manager
+Product Owner
+Delivery Manager
+Scrum Master
+Lead
+CTO
+Architect
+Engineering Manager
+DevOps
+Security
+Information Security
+Security Analyst
+Penetration Tester
+Sysadmin
+Business Analyst
+Data Science
+ML AI
+Web Analyst
+Data Analyst
+Data Engineer
+SQL
+Technical Writing
+Marketing
+Digital Marketing
+Digital Marketing Manager
+Social Media
+Content Marketing
+Content Writing
+Content Manager
+Advertising
+Affiliate Manager
+Media Buying
+PPC
+Marketing Analyst
+PR Manager
+Sales
+Lead Generation
+SEO
+HR
+Recruiter
+Support
+Head Chief
+CEO
+CFO
+CIO
+COO
+CPO
+CSO
+CMO
+CBDO
+CCO
+Finances
+Other
+no_exp
+1y
+2y
+3y
+4y
+5y
+6y
+7y
+8y
+9y
+10y
+remote
+parttime
+office
+agency
+outsource
+outstaff
+product
+startup
+no_english
+basic
+pre
+intermediate
+upper
+fluent
+UKR
+eu
+other
+kyiv
+vinnytsia
+dnipro
+ivano-frankivsk
+zhytomyr
+zaporizhzhia
+lviv
+mykolaiv
+odesa
+ternopil
+kharkiv
+khmelnytskyi
+cherkasy
+chernihiv
+chernivtsi
+uzhhorod
+FRA
+EST
+PRT
+LTU
+MLT
+LVA
+CZE
+POL
+ITA
+ROU
+BGR
+SWE
+AUT
+DEU
+SVK
+GBR
+HRV
+NLD
+ESP
+BEL
+HUN
+UKR
+POL
+CYP
+PRT
+ROU
+ESP
+BGR
+CZE
+DEU
+HRV
+SVK
+EST
+USA
+MDA
+KAZ
+LTU
+GEO
+ARM
+GBR
+UZB
+LVA
+MNE
+HUN
+CAN
+KGZ
+TJK
+AZE
+BEL
+ARE
+OMN
+QAT
+FRA
+MLT
+TUR
+MEX
+ARG
+BRA
+AUT
+SRB
+VNM
+CHE
+UMI
+ALB
+ISR
+IND
+SWE
+ITA
+SAU
+SGP
+ZAF
+BOL
+PRY
+GTM
+SLV
+ABW
+PER
+AUS
+MKD
+NLD
+NPL
+IDN
+CHL
+CHN
+VIR
+PRI
+COL
+CRI
+has_public_salary
+ukrainian_product
+miltech
+reservation

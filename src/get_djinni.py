@@ -18,7 +18,6 @@ async def get_djinni(url:str):
 
     soup = BeautifulSoup(response.content, "html.parser")
     pattern = re.compile(r'^job-item-\d+$')
-
     for item in soup.find_all('li', id=pattern):
         title = item.find(class_="job-item__title-link")
         company = item.find(class_="fw-medium d-flex flex-wrap align-items-center gap-1")
