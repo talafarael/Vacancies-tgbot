@@ -1,5 +1,5 @@
 import asyncio
-from src.dou.get_dou import GetVacanciesDou
+from src.djinni.get_djinni import GetVacanciesDjinni
 from src.create_data_for_bot import CreateDataForBot
 from src.connect_db import connect_db
 
@@ -16,7 +16,7 @@ experience = [
     {"name": "9-10 years", "dou": "5plus", "djinni": "10y"},
 ]
 
-url="https://jobs.dou.ua/vacancies/?category=Node.js&exp=0-1"
+url="https://djinni.co/jobs/"
 
 async def create_data_for_bot():
     cluster = await connect_db()
@@ -27,7 +27,8 @@ async def create_data_for_bot():
 
 
 async def scrap():
-    getVacanciesDou= GetVacanciesDou()                    
-    await getVacanciesDou.get_duo_vacancies(url)
+    getVacanciesDou= GetVacanciesDjinni()                    
+    arr_dou=await getVacanciesDou.get_djinni(url)
+    print(arr_dou)
 asyncio.run(scrap())
 

@@ -1,3 +1,4 @@
+import asyncio
 from dou.vacancies_dou_source import VacanciesDouSource
 
 
@@ -9,5 +10,7 @@ class GetVacancies:
         self.getVacanciesDou = getVacanciesDou
         self.getVacanciesDjinni = getVacanciesDjinni
 
-    async def get_vacancies(self, title: str, year: str):
-        dou = self.getVacanciesDou.get_duo_vacancies("")
+    async def get_vacancies(self, category: str, year: str):
+        url=f"https://jobs.dou.ua/vacancies/?category={category}&exp={year}"
+
+        dou = asyncio.run(self.getVacanciesDou.get_duo_vacancies(url))
