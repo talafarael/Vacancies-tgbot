@@ -1,4 +1,7 @@
 import asyncio
+from src.category.get_category import GetCategory
+from src.get_vacancies import GetVacancies
+from src.dou.get_dou import GetVacanciesDou
 from src.djinni.get_djinni import GetVacanciesDjinni
 from src.create_data_for_bot import CreateDataForBot
 from src.connect_db import connect_db
@@ -27,8 +30,16 @@ async def create_data_for_bot():
 
 
 async def scrap():
-    getVacanciesDou= GetVacanciesDjinni()                    
-    arr_dou=await getVacanciesDou.get_djinni(url)
-    print(arr_dou)
+    cluster = await connect_db()
+    getVacanciesDjinni=GetVacanciesDjinni()
+    getVacanciesDou=GetVacanciesDou()
+    getCategory=GetCategory(cluster)
+    getVacancies=GetVacancies(cluster,getVacanciesDou,getVacanciesDjinni,getCategory)
+    await getVacancies.vacancies()
+
+
+
+
+ 
 asyncio.run(scrap())
 

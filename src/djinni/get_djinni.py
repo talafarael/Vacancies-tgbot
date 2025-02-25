@@ -34,21 +34,18 @@ class GetVacanciesDjinni(VacanciesDjinniSource):
             description=getattr(item.find(class_="js-truncated-text"), "text", "") 
             link=item.find(class_="job-item__title-link").get("href") 
             company=getattr(item.find(class_="text-body js-analytics-event"), "text", "")  
-            company_img=item.find(class_="userpic-wrapper userpic-color_3 userpic_xs   userpic--logo").get("src")  
-            company_link=item.find(class_="text-body js-analytics-event").get("src")   
+            company_img_element = item.find(class_="userpic-image userpic-image_img")
+            company_img = company_img_element.get("src") if company_img_element and company_img_element.get("src") else ""
+
+            company_link=item.find(class_="text-body js-analytics-event").get("href")   
             salary= getattr(item.find(class_="text-success text-nowrap"), "text", "")   
 
 
 
             info_section = item.find(class_="fw-medium d-flex flex-wrap align-items-center gap-1")
-            info_items= info_section.find_all(class_="text-nowrap")
+            location= info_section.find(class_="text-nowrap").text
 
-            remote_type=info_items[0].text
-            location=info_items[1].text
-            production=info_items[2].text 
-            year_experience=info_items[3].text  
 
-            print("Удаленная работа:", remote_type)
             company = getattr(item.find(
                 class_="fw-medium d-flex flex-wrap align-items-center gap-1"
             ),"text","")
@@ -62,9 +59,6 @@ class GetVacanciesDjinni(VacanciesDjinniSource):
                 company_img,
                 company_link,
                 salary,
-                production,
-                year_experience,
-                remote_type
             )
             arr_varancie.append(varancie_djinni) 
         return arr_varancie
