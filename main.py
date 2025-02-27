@@ -1,10 +1,15 @@
-import asyncio
 from src.category.get_category import GetCategory
 from src.get_vacancies import GetVacancies
 from src.dou.get_dou import GetVacanciesDou
 from src.djinni.get_djinni import GetVacanciesDjinni
 from src.create_data_for_bot import CreateDataForBot
 from src.connect_db import connect_db
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+print( os.getenv("TOKEN"))
+
 
 experience = [
     {"name": "0-1 years", "dou": "0-1", "djinni": "1y"},
@@ -18,16 +23,47 @@ experience = [
     {"name": "8-9 years", "dou": "5plus", "djinni": "9y"},
     {"name": "9-10 years", "dou": "5plus", "djinni": "10y"},
 ]
-
+categories = [
+    {"name": "Java", "djinni": "Java", "dou": "Java"},
+    {"name": ".NET", "djinni": ".NET", "dou": ".NET"},
+    {"name": "PHP", "djinni": "PHP", "dou": "PHP"},
+    {"name": "C++", "djinni": "C++", "dou": "C++"},
+    {"name": "Python", "djinni": "Python", "dou": "Python"},
+    {"name": "AI/ML", "djinni": "AI/ML", "dou": "ML AI"},
+    {"name": "Golang", "djinni": "Golang", "dou": "Golang"},
+    {"name": "iOS/macOS", "djinni": "iOS/macOS", "dou": "iOS"},
+    {"name": "Android", "djinni": "Android", "dou": "Android"},
+    {"name": "Front End", "djinni": "Front End", "dou": "Fullstack"},
+    {"name": "Node.js", "djinni": "Node.js", "dou": "Node.js"},
+    {"name": "DevOps", "djinni": "DevOps", "dou": "DevOps"},
+    {"name": "Rust", "djinni": "Rust", "dou": "Rust"},
+    {"name": "Ruby", "djinni": "Ruby", "dou": "Ruby"},
+    {"name": "Scala", "djinni": "Scala", "dou": "Scala"},
+    {"name": "Erlang", "djinni": "Erlang", "dou": "None"},
+    {"name": "Flutter", "djinni": "Flutter", "dou": "Flutter"},
+    {"name": "React Native", "djinni": "React Native", "dou": "React Native"},
+    {"name": "Elixir", "djinni": "None", "dou": "Elixir"},
+    {"name": "Kotlin", "djinni": "None", "dou": "Kotlin"},
+    {"name": "Salesforce", "djinni": "None", "dou": "Salesforce"},
+    {"name": "ERP", "djinni": "None", "dou": "ERP"},
+    {"name": "QA", "djinni": "None", "dou": "QA"},
+    {"name": "Technical Writing", "djinni": "None", "dou": "Technical Writing"},
+    {"name": "Marketing", "djinni": "None", "dou": "Marketing"},
+    {"name": "HR", "djinni": "None", "dou": "HR"},
+    {"name": "Support", "djinni": "None", "dou": "Support"},
+]
 url="https://djinni.co/jobs/"
 
 async def create_data_for_bot():
     cluster = await connect_db()
     create_vacancies = CreateDataForBot(cluster)
-    results = await create_vacancies.create_vacancies(experience, "experience")
+    # results = await create_vacancies.create_vacancies(experience, "experience")
+    results = await create_vacancies.create_vacancies(categories, "category") 
 
 
 
+
+#asyncio.run(create_data_for_bot()) 
 
 async def scrap():
     cluster = await connect_db()
@@ -41,5 +77,26 @@ async def scrap():
 
 
  
-asyncio.run(scrap())
-
+#asyncio.run(scrap())
+#api_id = os.getenv("API_ID") 
+#api_hash =os.getenv("API_HASH")   
+#bot_token=os.getenv("TOKEN")
+#
+#bot = TelegramClient('bot', api_id, api_hash).start(bot_token=bot_token)
+#
+#@bot.on(events.NewMessage(pattern='/start'))
+#async def start(event):
+#    chat_id = event.chat_id  # Get chat ID
+#    user_id = event.sender_id  # Get user ID
+#    await event.respond('Hi!')
+#    raise events.StopPropagation
+#
+#@bot.on(events.NewMessage)
+#async def echo(event):
+#    """Echo the user message."""
+#    await event.respond(event.text)
+#
+#def main():
+#    """Start the bot."""
+#    bot.run_until_disconnected()
+#
