@@ -20,3 +20,9 @@ class User:
         except Exception as e:
             print(f"Ошибка при выполнении запроса: {e}")
             return None 
+    async def add_filter(self):
+        try:
+            return
+        except Exception as e:
+            print(e)
+

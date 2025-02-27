@@ -6,10 +6,7 @@ from src.create_data_for_bot import CreateDataForBot
 from src.connect_db import connect_db
 import os
 from dotenv import load_dotenv
-from telethon import TelegramClient, events
 from src.tgbot_service.tgbot import TgBot
-from telethon.tl.custom import Button
-
 load_dotenv()
 print( os.getenv("TOKEN"))
 
@@ -75,51 +72,13 @@ async def scrap():
     getCategory=GetCategory(cluster)
     getVacancies=GetVacancies(cluster,getVacanciesDou,getVacanciesDjinni,getCategory)
     await getVacancies.vacancies()
-client = TelegramClient('bot', os.getenv("API_ID"), os.getenv("API_HASH")).start(bot_token=os.getenv("TOKEN"))
+async def start_bot():
+    cluster = await connect_db() 
+    tgbot=TgBot(cluster)
+    tgbot.bot_run
 
 
 
-
-
-
-@client.on(events.NewMessage(pattern="/start"))
-async def start(event):
-    buttons = [ 
-         [Button.inline("Добавить в список", b"add_to_list",type="1")],
-         [Button.inline("Добавить в список", b"add_to_list")],
-         [Button.inline("text", b"add_to_list")]
-    ]
-    await event.respond("Выберите команду:", buttons=buttons)
-
-
-@client.on(events.CallbackQuery)
-async def handle_callback(event):
-    user_id = event.sender_id
-    print(event)
-    data = event.data.decode("utf-8")
-    text = button_texts.get(data, "Неизвестная команда")
-    print(data)
-
-
-
-async def start_bot():            
-    cluster = await connect_db()  
-    getCategory=GetCategory(cluster) 
-    tg_bot=TgBot(cluster,client,getCategory)
-
-
-
-
-client.run_until_disconnected()
-
-
-
-
-
-
-
-
-
-
-#asyncio.run(start_bot())
+ 
 #asyncio.run(scrap())
+
