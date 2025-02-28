@@ -64,9 +64,32 @@ async def create_data_for_bot():
     results = await create_vacancies.create_vacancies(categories, "category") 
 
 
+client = TelegramClient('bot', os.getenv("API_ID"), os.getenv("API_HASH")).start(bot_token=os.getenv("TOKEN")) 
+tg_bot=None                                                                                                    
 
 
 #asyncio.run(create_data_for_bot()) 
+async def main():
+    cluster = await connect_db()               
+    getCategory=GetCategory(cluster)           
+    tg_bot=TgBot(cluster,client,getCategory)   
+    print("Bot started successfully!")     
+    await client.run_until_disconnected()  
+    @client.on(events.NewMessage(pattern="/add_filter"))
+    async def start(event):
+        if tg_bot:
+            await tg_bot.button_return("category",event)
+    @client.on(events.CallbackQuery)
+    async def handle_callback(event):
+        user_id = event.sender_id
+        print(event)
+        data = event.data.decode("utf-8")
+        res=data.split(":")
+        action = res[0]
+        value=res[0]
+
+asyncio.run(main())
+
 
 async def scrap():
     cluster = await connect_db()
@@ -75,37 +98,20 @@ async def scrap():
     getCategory=GetCategory(cluster)
     getVacancies=GetVacancies(cluster,getVacanciesDou,getVacanciesDjinni,getCategory)
     await getVacancies.vacancies()
-client = TelegramClient('bot', os.getenv("API_ID"), os.getenv("API_HASH")).start(bot_token=os.getenv("TOKEN"))
-tg_bot=None
+
+
 #async def start_bot():                       
 
     
-    
-    
 
 
 
 
 
 
-@client.on(events.NewMessage(pattern="/start"))
-async def start(event):
-    print("pec")
-    cluster = await connect_db()              
-    getCategory=GetCategory(cluster)          
-    tg_bot=TgBot(cluster,client,getCategory)  
-
-    if tg_bot:
-        await tg_bot.button_return("category",event)
 
 
-@client.on(events.CallbackQuery)
-async def handle_callback(event):
-    user_id = event.sender_id
-    print(event)
-    data = event.data.decode("utf-8")
-    text = button_texts.get(data, "Неизвестная команда")
-    print(data)
+
 
 
 
@@ -119,10 +125,9 @@ async def handle_callback(event):
 
 client.run_until_disconnected()
 
-async def main():
-    await start_bot()
-    print("Bot started successfully!")
-    await client.run_until_disconnected() 
+
+
+
 
 
 

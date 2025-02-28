@@ -22,7 +22,6 @@ class TgBot:
         method = self.methods.get(type_button)
         if method: 
             res=await method()
-            print(res)
             buttons = [
                 [Button.inline(item["name"],f"add_filter_category:{item["name"]}" )]
                 for item in res
