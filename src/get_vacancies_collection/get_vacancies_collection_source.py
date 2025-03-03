@@ -4,7 +4,7 @@ from src.types.vacancies_full_obj_type import VacanciesFullType
 from bson import ObjectId
 
 
-class GetVacanciesSource(ABC):
+class GetVacanciesCollectionSource(ABC):
     @abstractmethod
     async def get_vacancy(self,id: ObjectId)->VacanciesFullType: 
         pass

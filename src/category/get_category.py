@@ -9,7 +9,8 @@ class GetCategory(GetCategorySource):
     def __init__(self,cluster) -> None:
         self.cluster=cluster
     async def get_one(self,id:str,name_collection:CollectionName)->CategoryType:
-        collection=self.cluster[name_collection]
+        collection=await self.cluster[name_collection]
+        return collection
     async def get(self,name_collection:CollectionName) -> List[CategoryType] :
         try:
             collection =self.cluster.test[name_collection]

@@ -1,4 +1,5 @@
 import asyncio
+from src.get_vacancies_collection.get_vacancies_collection import GetVacancieCollection
 from src.create_data_for_bot import CreateDataForBot
 from src.category.get_category import GetCategory
 from src.get_vacancies import GetVacancies
@@ -72,8 +73,8 @@ async def main():
     client = TelegramClient('bot', os.getenv("API_ID"), os.getenv("API_HASH"))
     await client.start(bot_token=os.getenv("TOKEN"))
     cluster = await connect_db()               
-    getCategory=GetCategory(cluster)
-    tg_bot=TgBot(cluster,client,getCategory)   
+    getVacancieCollection=GetVacancieCollection(cluster)
+    tg_bot=TgBot(cluster,client,getVacancieCollection)   
     print("Bot started successfully!")     
      
 
