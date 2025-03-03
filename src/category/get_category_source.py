@@ -4,11 +4,10 @@ from typing import List
                                                                                                        
 class GetCategorySource(ABC):                                                                      
     @abstractmethod                                                                                    
-    async def get_category(self)-> List[dict] :                          
+    async def get(self,name_collection:str)-> List[dict] :                          
         pass                                                                                           
     @abstractmethod
     async def get_experience(self)->List[dict]:
         pass
 
                                                                                                        
-

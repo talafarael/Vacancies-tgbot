@@ -3,12 +3,12 @@ from src.category.get_category import GetCategory
 from src.get_vacancies import GetVacancies
 from src.dou.get_dou import GetVacanciesDou
 from src.djinni.get_djinni import GetVacanciesDjinni
-from src.create_data_for_bot import CreateDataForBot
 from src.connect_db import connect_db
 import os
 from dotenv import load_dotenv
 from telethon import TelegramClient, events
 from src.tgbot_service.tgbot import TgBot
+
 
 load_dotenv()
 print( os.getenv("TOKEN"))
@@ -57,26 +57,28 @@ categories = [
 ]
 url="https://djinni.co/jobs/"
 
-async def create_data_for_bot():
-    cluster = await connect_db()
-    create_vacancies = CreateDataForBot(cluster)
-    # results = await create_vacancies.create_vacancies(experience, "experience")
-    results = await create_vacancies.create_vacancies(categories, "category") 
+#async def create_data_for_bot():
+#    cluster = await connect_db()
+#    create_vacancies = CreateDataForBot(cluster)
+#    # results = await create_vacancies.create_vacancies(experience, "experience")
+#    results = await create_vacancies.create_vacancies(categories, "category") 
 
 
-client = TelegramClient('bot', os.getenv("API_ID"), os.getenv("API_HASH")).start(bot_token=os.getenv("TOKEN")) 
 tg_bot=None                                                                                                    
 
 
 #asyncio.run(create_data_for_bot()) 
 async def main():
+    client = TelegramClient('bot', os.getenv("API_ID"), os.getenv("API_HASH"))
+    await client.start(bot_token=os.getenv("TOKEN"))
     cluster = await connect_db()               
-    getCategory=GetCategory(cluster)           
+    getCategory=GetCategory(cluster)
     tg_bot=TgBot(cluster,client,getCategory)   
     print("Bot started successfully!")     
-    await client.run_until_disconnected()  
-    @client.on(events.NewMessage(pattern="/add_filter"))
+
+    @client.on(events.NewMessage(pattern="/addfilter"))
     async def start(event):
+        print("f")
         if tg_bot:
             await tg_bot.button_return("category",event)
     @client.on(events.CallbackQuery)
@@ -87,10 +89,11 @@ async def main():
         res=data.split(":")
         action = res[0]
         value=res[0]
+    async with client:
+        await client.run_until_disconnected()
+
 
 asyncio.run(main())
-
-
 async def scrap():
     cluster = await connect_db()
     getVacanciesDjinni=GetVacanciesDjinni()
@@ -123,7 +126,6 @@ async def scrap():
 
 
 
-client.run_until_disconnected()
 
 
 
@@ -131,7 +133,6 @@ client.run_until_disconnected()
 
 
 
-asyncio.run(main())
 
 
 

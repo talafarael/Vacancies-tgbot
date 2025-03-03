@@ -13,8 +13,8 @@ class GetVacancies:
         self.getVacanciesDjinni = getVacanciesDjinni
         self.getCategory=getCategory
     async def vacancies(self):
-        category =await self.getCategory.get_category()
-        expirence =await self.getCategory.get_experience()
+        category =await self.getCategory.get("category")
+        expirence =await self.getCategory.get("experience")
         await self.get_vacancies(expirence)
     async def get_vacancies(self,expirence):
         for exp in expirence: 
