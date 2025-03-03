@@ -1,4 +1,5 @@
 import asyncio
+from src.create_data_for_bot import CreateDataForBot
 from src.category.get_category import GetCategory
 from src.get_vacancies import GetVacancies
 from src.dou.get_dou import GetVacanciesDou
@@ -63,10 +64,9 @@ url="https://djinni.co/jobs/"
 #    # results = await create_vacancies.create_vacancies(experience, "experience")
 #    results = await create_vacancies.create_vacancies(categories, "category") 
 
-
-tg_bot=None                                                                                                    
-
-
+async def create_vacancies(cluster,getCategory):
+    create_data_for_bot=CreateDataForBot(cluster,getCategory)
+    await create_data_for_bot.create_vacancies()
 #asyncio.run(create_data_for_bot()) 
 async def main():
     client = TelegramClient('bot', os.getenv("API_ID"), os.getenv("API_HASH"))
@@ -75,6 +75,15 @@ async def main():
     getCategory=GetCategory(cluster)
     tg_bot=TgBot(cluster,client,getCategory)   
     print("Bot started successfully!")     
+     
+
+
+
+
+
+
+
+
 
     @client.on(events.NewMessage(pattern="/addfilter"))
     async def start(event):
@@ -104,37 +113,4 @@ async def scrap():
 
 
 #async def start_bot():                       
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #asyncio.run(scrap())
