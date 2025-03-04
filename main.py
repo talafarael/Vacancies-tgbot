@@ -82,15 +82,22 @@ async def main():
 
 
 
+    @client.on(events.NewMessage(pattern="/start")) 
+    async def start(event):                             
+        user_id = event.sender_id  
+        chat_id = event.chat_id  
+        sender = await event.get_sender()  
+        name = sender.first_name  
+
 
 
 
 
     @client.on(events.NewMessage(pattern="/addfilter"))
-    async def start(event):
-        print("f")
-        if tg_bot:
-            await tg_bot.button_return("category",event)
+    async def addfilter(event):
+        await tg_bot.button_return("category",event)
+
+
     @client.on(events.CallbackQuery)
     async def handle_callback(event):
         user_id = event.sender_id
