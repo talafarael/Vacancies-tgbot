@@ -1,5 +1,10 @@
 from motor.motor_asyncio import AsyncIOMotorClient
+import os
+from dotenv import load_dotenv 
+
+load_dotenv()             
+
 
 async def connect_db()-> AsyncIOMotorClient:
-    cluster=AsyncIOMotorClient("mongodb+srv://fara:123456780a@cluster0.fnu9v.mongodb.net/test")
+    cluster=AsyncIOMotorClient(os.getenv("DB"))
     return cluster

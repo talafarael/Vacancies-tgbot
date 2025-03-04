@@ -6,4 +6,3 @@ class CategoryType(TypedDict):
     djinni: int
     name: str
     users: List[str]
-
