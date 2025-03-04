@@ -1,4 +1,5 @@
 import asyncio
+from src.action_tg_manager.action_tg_manager import ActionTgManager
 from src.get_vacancies_collection.get_vacancies_collection import GetVacancieCollection
 from src.create_data_for_bot import CreateDataForBot
 from src.category.get_category import GetCategory
@@ -10,6 +11,8 @@ import os
 from dotenv import load_dotenv
 from telethon import TelegramClient, events
 from src.tgbot_service.tgbot import TgBot
+from src.user_manager.user import User
+from src.tg_message_manager.tg_message_manager import TgMessageManager
 
 
 load_dotenv()
@@ -75,12 +78,9 @@ async def main():
     cluster = await connect_db()               
     getVacancieCollection=GetVacancieCollection(cluster)
     tg_bot=TgBot(cluster,client,getVacancieCollection)   
-    print("Bot started successfully!")     
-     
-
-
-
-
+    user=User(cluster)
+    tg_message_manager=TgMessageManager(client)
+    action_tg_manager=ActionTgManager(user,tg_message_manager)
 
     @client.on(events.NewMessage(pattern="/start")) 
     async def start(event):                             
@@ -88,9 +88,7 @@ async def main():
         chat_id = event.chat_id  
         sender = await event.get_sender()  
         name = sender.first_name  
-
-
-
+        await user.user_create(chat_id,user_id,name)
 
 
     @client.on(events.NewMessage(pattern="/addfilter"))
@@ -100,12 +98,9 @@ async def main():
 
     @client.on(events.CallbackQuery)
     async def handle_callback(event):
-        user_id = event.sender_id
-        print(event)
-        data = event.data.decode("utf-8")
-        res=data.split(":")
-        action = res[0]
-        value=res[0]
+        await action_tg_manager.action_tg_manager(event)
+        
+
     async with client:
         await client.run_until_disconnected()
 
