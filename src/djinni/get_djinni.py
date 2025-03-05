@@ -5,7 +5,7 @@ import urllib.request
 from bs4 import BeautifulSoup
 
 from src.djinni.vacancies_djinni_source import VacanciesDjinniSource
-from src.djinni.vacancies_djnni import VacanciesDjinni
+from src.types.vacancies_dou_type import VacanciesScrapType
 
 
 headers = {
@@ -16,7 +16,7 @@ headers = {
 
 
 class GetVacanciesDjinni(VacanciesDjinniSource):
-    async def get_djinni_vacancies(self, url: str)->List[VacanciesDjinni]:
+    async def get_djinni_vacancies(self, url: str)->List[VacanciesScrapType]:
         try:
             response = requests.get(
                 url, headers=headers, proxies=urllib.request.getproxies()

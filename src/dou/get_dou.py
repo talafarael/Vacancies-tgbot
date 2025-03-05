@@ -1,15 +1,12 @@
 from typing import List
 import requests
 from bs4 import BeautifulSoup
-from src.dou.vacancies_dou import VacanciesDou
 from src.dou.vacancies_dou_source import  VacanciesDouSource
-
-
-
+from src.types.vacancies_dou_type import VacanciesScrapType
 
 
 class GetVacanciesDou(VacanciesDouSource):
-    async def get_duo_vacancies(self, url: str) -> List[VacanciesDou]:
+    async def get_duo_vacancies(self, url: str) -> List[VacanciesScrapType]:
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
             "Referer": "https://jobs.dou.ua/",
@@ -33,16 +30,16 @@ class GetVacanciesDou(VacanciesDouSource):
                 company_img = company_img['src'] if company_img and 'src' in company_img.attrs else None
                 company=getattr(item.find(class_="company"), "text", None)
                 salary=getattr(item.find(class_="salary"), "text", None) 
-                vacancies_dou =VacanciesDou(
-                    title,
-                    description,
-                    link,
-                    location,
-                    company,
-                    company_link,
-                    company_img,
-                    salary
-                )
+                vacancies_dou = {
+                    "title": title,
+                    "description": description,
+                    "link": link,
+                    "location": location,
+                    "company": company,
+                    "company_link": company_link,
+                    "company_img": company_img,
+                    "salary": salary
+                }
                 arr_varancie.append(vacancies_dou)
 
 

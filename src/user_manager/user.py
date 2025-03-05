@@ -1,12 +1,24 @@
 
 
 
-class User:
+from typing import List
+from src.user_manager.user_source import UserSource
+from src.types.user_obj_type import UserType
+
+
+class User(UserSource):
     def __init__(self, cluster) -> None:
         self._cluster = cluster
 
 
-    async def user_create(self, chat_id: str, user_id: str,name:str):
+    async def user_vacancies_find(self,vacancy_id:str)->List[UserType]:
+        try:
+            collection = self._cluster.test.user
+            users = await collection.find({"vacancies": vacancy_id}).to_list(None)
+            return users
+        except NameError:
+            return []
+    async def user_create(self, chat_id: str, user_id: str,name:str)->UserType | None:
         try:
             collection = self._cluster.test.user
             res = await collection.update_one(
@@ -22,7 +34,7 @@ class User:
             return None 
 
 
-    async def add_filter(self,chat_id:str,vacancy_collection_id:str):
+    async def add_filter(self,chat_id:str,vacancy_collection_id:str)->bool:
         try:
             collection = self._cluster.test.user
             await collection.update_one(
