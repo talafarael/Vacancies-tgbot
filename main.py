@@ -1,9 +1,9 @@
 import asyncio
+from src.new_vacancies_filter.new_vacancies_filter import NewVacanciesFilter
 from src.action_tg_manager.action_tg_manager import ActionTgManager
 from src.get_vacancies_collection.get_vacancies_collection import GetVacancieCollection
 from src.create_data_for_bot import CreateDataForBot
 from src.category.get_category import GetCategory
-from src.get_vacancies import GetVacancies
 from src.dou.get_dou import GetVacanciesDou
 from src.djinni.get_djinni import GetVacanciesDjinni
 from src.connect_db import connect_db
@@ -13,7 +13,7 @@ from telethon import TelegramClient, events
 from src.tgbot_service.tgbot import TgBot
 from src.user_manager.user import User
 from src.tg_message_manager.tg_message_manager import TgMessageManager
-
+from src.vacancies.get_vacancies import GetVacancies
 
 load_dotenv()
 print( os.getenv("TOKEN"))
@@ -79,9 +79,15 @@ async def main():
     getVacancieCollection=GetVacancieCollection(cluster)
     tg_bot=TgBot(cluster,client,getVacancieCollection)   
     user=User(cluster)
+    get_vacancies_dou=GetVacanciesDou()
+    get_vacancies_djinni=GetVacanciesDjinni()
+    new_vacancies_filter=NewVacanciesFilter(cluster)
     tg_message_manager=TgMessageManager(client)
+    get_vacancies=GetVacancies(cluster,get_vacancies_dou,get_vacancies_djinni,getVacancieCollection,user,new_vacancies_filter,tg_message_manager)
+
     action_tg_manager=ActionTgManager(user,tg_message_manager)
 
+    
     @client.on(events.NewMessage(pattern="/start")) 
     async def start(event):                             
         user_id = event.sender_id  
@@ -100,9 +106,17 @@ async def main():
     async def handle_callback(event):
         await action_tg_manager.action_tg_manager(event)
         
+    async def fetch_vacancies():
+        while True:
+            await get_vacancies.vacancies()
+            await asyncio.sleep(3600)  
+
+
+    asyncio.create_task(fetch_vacancies())
 
     async with client:
         await client.run_until_disconnected()
+
 
 
 asyncio.run(main())
@@ -111,8 +125,6 @@ async def scrap():
     getVacanciesDjinni=GetVacanciesDjinni()
     getVacanciesDou=GetVacanciesDou()
     getCategory=GetCategory(cluster)
-    getVacancies=GetVacancies(cluster,getVacanciesDou,getVacanciesDjinni,getCategory)
-    await getVacancies.vacancies()
 
 
 #async def start_bot():                       
