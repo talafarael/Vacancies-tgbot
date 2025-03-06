@@ -4,23 +4,24 @@ from typing import List, Tuple
 
 from src.types.vacancies_dou_type import VacanciesScrapType
 
-get_one_vacancies_type=Tuple[List[VacanciesScrapType],List[VacanciesScrapType]]
+get_one_vacancies_type = Tuple[List[VacanciesScrapType], List[VacanciesScrapType]]
+
 
 class GetVacanciesSource(ABC):
     @abstractmethod
-    async def vacancies(self)->NoneType:
+    async def vacancies(self) -> NoneType:
         pass
-
 
     @abstractmethod
-    async def get_one_vacancies(self, category_dou: str, year_dou: str,category_djinni: str, year_djinni: str,)->get_one_vacancies_type:
+    async def get_one_vacancies(
+        self,
+        category_dou: str,
+        year_dou: str,
+        category_djinni: str,
+        year_djinni: str,
+    ) -> get_one_vacancies_type:
         pass
-
 
     @abstractmethod
-    async def get_vacancy(self,vacancies)->get_one_vacancies_type:
+    async def get_vacancy(self, vacancies) -> get_one_vacancies_type:
         pass
-
-
-
-

@@ -6,8 +6,9 @@ from bson import ObjectId
 
 class GetVacanciesCollectionSource(ABC):
     @abstractmethod
-    async def get_vacancy(self,id: ObjectId)->VacanciesFullType: 
+    async def get_vacancy(self, id: ObjectId) -> VacanciesFullType:
         pass
+
     @abstractmethod
-    async def get_vacancies(self)->List[VacanciesFullType]:
+    async def get_vacancies(self) -> List[VacanciesFullType]:
         pass

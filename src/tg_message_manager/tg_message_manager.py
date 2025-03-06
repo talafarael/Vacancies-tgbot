@@ -1,5 +1,3 @@
-
-
 import asyncio
 from typing import List
 
@@ -7,13 +5,14 @@ from src.types.user_obj_type import UserType
 from src.types.vacancies_dou_type import VacanciesScrapType
 
 
-class TgMessageManager():
-    def __init__(self,client):
-        self._client=client
+class TgMessageManager:
+    def __init__(self, client):
+        self._client = client
 
-
-    async def user_vacancies_mailing_list(self,users:List[UserType],vacancies_lsit:List[VacanciesScrapType]):
-        tasks=[]
+    async def user_vacancies_mailing_list(
+        self, users: List[UserType], vacancies_lsit: List[VacanciesScrapType]
+    ):
+        tasks = []
         for vacancy in vacancies_lsit:
             text = (
                 f"📌 *{vacancy['title']}*\n"
@@ -24,13 +23,12 @@ class TgMessageManager():
                 f"🔗 [Подробнее]({vacancy['link']})"
             )
             for user in users:
-               tasks.append(self.send_message(user["chat_id"],text))
+                tasks.append(self.send_message(user["chat_id"], text))
 
         await asyncio.gather(*tasks)
 
-
-    async def send_message(self,chat_id,message):
+    async def send_message(self, chat_id, message):
         try:
-            await self._client.send_message(chat_id, message)  
+            await self._client.send_message(chat_id, message)
         except NameError:
             return None

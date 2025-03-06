@@ -9,10 +9,11 @@ from selenium.webdriver.chrome.options import Options
 from src.types.vacancies_dou_type import VacanciesScrapType
 from webdriver_manager.chrome import ChromeDriverManager
 
+
 class GetVacanciesDou(VacanciesDouSource):
     async def get_duo_vacancies(self, url: str) -> List[VacanciesScrapType]:
         try:
-            USER_AGENTS = [ 
+            USER_AGENTS = [
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
                 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
                 "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36",
@@ -28,7 +29,9 @@ class GetVacanciesDou(VacanciesDouSource):
             chrome_options.add_argument("--disable-dev-shm-usage")
 
             # Запуск WebDriver
-            driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+            driver = webdriver.Chrome(
+                service=Service(ChromeDriverManager().install()), options=chrome_options
+            )
             driver.get(url)
             time.sleep(3)  # Даем странице время загрузиться
 
@@ -36,25 +39,59 @@ class GetVacanciesDou(VacanciesDouSource):
             vacancy_elements = driver.find_elements(By.CLASS_NAME, "l-vacancy")
 
             for item in vacancy_elements:
-                title = item.find_element(By.CLASS_NAME, "title").text if item.find_elements(By.CLASS_NAME, "title") else ""
-                link = item.find_element(By.CLASS_NAME, "vt").get_attribute("href") if item.find_elements(By.CLASS_NAME, "vt") else ""
-                description = item.find_element(By.CLASS_NAME, "sh-info").text if item.find_elements(By.CLASS_NAME, "sh-info") else ""
-                location = item.find_element(By.CLASS_NAME, "cities").text if item.find_elements(By.CLASS_NAME, "cities") else ""
-                company = item.find_element(By.CLASS_NAME, "company").text if item.find_elements(By.CLASS_NAME, "company") else ""
-                company_link = item.find_element(By.CLASS_NAME, "company").get_attribute("href") if item.find_elements(By.CLASS_NAME, "company") else ""
-                company_img = item.find_element(By.CLASS_NAME, "f-i").get_attribute("src") if item.find_elements(By.CLASS_NAME, "f-i") else None
-                salary = item.find_element(By.CLASS_NAME, "salary").text if item.find_elements(By.CLASS_NAME, "salary") else ""
+                title = (
+                    item.find_element(By.CLASS_NAME, "title").text
+                    if item.find_elements(By.CLASS_NAME, "title")
+                    else ""
+                )
+                link = (
+                    item.find_element(By.CLASS_NAME, "vt").get_attribute("href")
+                    if item.find_elements(By.CLASS_NAME, "vt")
+                    else ""
+                )
+                description = (
+                    item.find_element(By.CLASS_NAME, "sh-info").text
+                    if item.find_elements(By.CLASS_NAME, "sh-info")
+                    else ""
+                )
+                location = (
+                    item.find_element(By.CLASS_NAME, "cities").text
+                    if item.find_elements(By.CLASS_NAME, "cities")
+                    else ""
+                )
+                company = (
+                    item.find_element(By.CLASS_NAME, "company").text
+                    if item.find_elements(By.CLASS_NAME, "company")
+                    else ""
+                )
+                company_link = (
+                    item.find_element(By.CLASS_NAME, "company").get_attribute("href")
+                    if item.find_elements(By.CLASS_NAME, "company")
+                    else ""
+                )
+                company_img = (
+                    item.find_element(By.CLASS_NAME, "f-i").get_attribute("src")
+                    if item.find_elements(By.CLASS_NAME, "f-i")
+                    else None
+                )
+                salary = (
+                    item.find_element(By.CLASS_NAME, "salary").text
+                    if item.find_elements(By.CLASS_NAME, "salary")
+                    else ""
+                )
 
-                vacancies.append({
-                    "title": title,
-                    "description": description,
-                    "link": link,
-                    "location": location,
-                    "company": company,
-                    "company_link": company_link,
-                    "company_img": company_img,
-                    "salary": salary
-                })
+                vacancies.append(
+                    {
+                        "title": title,
+                        "description": description,
+                        "link": link,
+                        "location": location,
+                        "company": company,
+                        "company_link": company_link,
+                        "company_img": company_img,
+                        "salary": salary,
+                    }
+                )
             driver.quit()
             return vacancies
 

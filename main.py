@@ -16,7 +16,7 @@ from src.tg_message_manager.tg_message_manager import TgMessageManager
 from src.vacancies.get_vacancies import GetVacancies
 
 load_dotenv()
-print( os.getenv("TOKEN"))
+print(os.getenv("TOKEN"))
 
 
 experience = [
@@ -60,57 +60,64 @@ categories = [
     {"name": "HR", "djinni": "None", "dou": "HR"},
     {"name": "Support", "djinni": "None", "dou": "Support"},
 ]
-url="https://djinni.co/jobs/"
+url = "https://djinni.co/jobs/"
 
-#async def create_data_for_bot():
+# async def create_data_for_bot():
 #    cluster = await connect_db()
 #    create_vacancies = CreateDataForBot(cluster)
 #    # results = await create_vacancies.create_vacancies(experience, "experience")
-#    results = await create_vacancies.create_vacancies(categories, "category") 
+#    results = await create_vacancies.create_vacancies(categories, "category")
 
-async def create_vacancies(cluster,getCategory):
-    create_data_for_bot=CreateDataForBot(cluster,getCategory)
+
+async def create_vacancies(cluster, getCategory):
+    create_data_for_bot = CreateDataForBot(cluster, getCategory)
     await create_data_for_bot.create_vacancies()
-#asyncio.run(create_data_for_bot()) 
+
+
+# asyncio.run(create_data_for_bot())
 async def main():
-    client = TelegramClient('bot', os.getenv("API_ID"), os.getenv("API_HASH"))
+    client = TelegramClient("bot", os.getenv("API_ID"), os.getenv("API_HASH"))
     await client.start(bot_token=os.getenv("TOKEN"))
-    cluster = await connect_db()               
-    getVacancieCollection=GetVacancieCollection(cluster)
-    tg_bot=TgBot(cluster,client,getVacancieCollection)   
-    user=User(cluster)
-    get_vacancies_dou=GetVacanciesDou()
-    get_vacancies_djinni=GetVacanciesDjinni()
-    new_vacancies_filter=NewVacanciesFilter(cluster)
-    tg_message_manager=TgMessageManager(client)
-    get_vacancies=GetVacancies(cluster,get_vacancies_dou,get_vacancies_djinni,getVacancieCollection,user,new_vacancies_filter,tg_message_manager)
+    cluster = await connect_db()
+    getVacancieCollection = GetVacancieCollection(cluster)
+    tg_bot = TgBot(cluster, client, getVacancieCollection)
+    user = User(cluster)
+    get_vacancies_dou = GetVacanciesDou()
+    get_vacancies_djinni = GetVacanciesDjinni()
+    new_vacancies_filter = NewVacanciesFilter(cluster)
+    tg_message_manager = TgMessageManager(client)
+    get_vacancies = GetVacancies(
+        cluster,
+        get_vacancies_dou,
+        get_vacancies_djinni,
+        getVacancieCollection,
+        user,
+        new_vacancies_filter,
+        tg_message_manager,
+    )
 
-    action_tg_manager=ActionTgManager(user,tg_message_manager)
+    action_tg_manager = ActionTgManager(user, tg_message_manager)
 
-    
-    @client.on(events.NewMessage(pattern="/start")) 
-    async def start(event):                             
-        user_id = event.sender_id  
-        chat_id = event.chat_id  
-        sender = await event.get_sender()  
-        name = sender.first_name  
-        await user.user_create(chat_id,user_id,name)
-
+    @client.on(events.NewMessage(pattern="/start"))
+    async def start(event):
+        user_id = event.sender_id
+        chat_id = event.chat_id
+        sender = await event.get_sender()
+        name = sender.first_name
+        await user.user_create(chat_id, user_id, name)
 
     @client.on(events.NewMessage(pattern="/addfilter"))
     async def addfilter(event):
-        await tg_bot.button_return("category",event)
-
+        await tg_bot.button_return("category", event)
 
     @client.on(events.CallbackQuery)
     async def handle_callback(event):
         await action_tg_manager.action_tg_manager(event)
-        
+
     async def fetch_vacancies():
         while True:
             await get_vacancies.vacancies()
-            await asyncio.sleep(3600)  
-
+            await asyncio.sleep(3600)
 
     asyncio.create_task(fetch_vacancies())
 
@@ -118,14 +125,15 @@ async def main():
         await client.run_until_disconnected()
 
 
-
 asyncio.run(main())
+
+
 async def scrap():
     cluster = await connect_db()
-    getVacanciesDjinni=GetVacanciesDjinni()
-    getVacanciesDou=GetVacanciesDou()
-    getCategory=GetCategory(cluster)
+    getVacanciesDjinni = GetVacanciesDjinni()
+    getVacanciesDou = GetVacanciesDou()
+    getCategory = GetCategory(cluster)
 
 
-#async def start_bot():                       
-#asyncio.run(scrap())
+# async def start_bot():
+# asyncio.run(scrap())

@@ -1,7 +1,9 @@
-from typing import  List, TypedDict
-from bson import ObjectId 
+from typing import List, TypedDict
+from bson import ObjectId
+
+
 class CategoryType(TypedDict):
-    _id:  ObjectId
+    _id: ObjectId
     dou: int
     djinni: int
     name: str
