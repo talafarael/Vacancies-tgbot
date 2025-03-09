@@ -15,13 +15,14 @@ class GetCategory(GetCategorySource):
         return collection
 
     async def get(self, name_collection: CollectionName) -> List[CategoryType]:
-        try:
-            collection = self.cluster.test[name_collection]
-            category = await collection.find().to_list(length=None)
-            return category
-        except NameError:
-            print(NameError)
-            return []
+           try:
+               collection = self.cluster.test[name_collection] 
+               category_cursor = collection.find()
+               category = await category_cursor.to_list(length=None)  
+               return category
+           except Exception as e: 
+               print(f"Ошибка при получении данных: {e}")
+               return []
 
     async def get_experience(self) -> List[dict]:
         try:
