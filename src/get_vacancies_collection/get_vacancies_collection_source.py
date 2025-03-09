@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List
-from src.types.vacancies_full_obj_type import VacanciesFullType
 from bson import ObjectId
+from vacancy_types.vacancies_full_obj_type import VacanciesFullType
 
 
 class GetVacanciesCollectionSource(ABC):

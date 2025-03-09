@@ -1,8 +1,10 @@
 from abc import ABC, abstractmethod
 from typing import List
 
-from src.types.collection import CollectionName
-from src.types.category_obj_type import CategoryType
+from vacancy_types.category_obj_type import CategoryType
+from vacancy_types.collection import CollectionName
+
+
 
 
 class GetCategorySource(ABC):

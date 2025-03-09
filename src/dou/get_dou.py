@@ -1,12 +1,12 @@
 import random
 import time
 from typing import List
-from src.dou.vacancies_dou_source import VacanciesDouSource
+from dou.vacancies_dou_source import VacanciesDouSource
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
-from src.types.vacancies_dou_type import VacanciesScrapType
+from vacancy_types.vacancies_scrap_type import VacanciesScrapType
 from webdriver_manager.chrome import ChromeDriverManager
 
 

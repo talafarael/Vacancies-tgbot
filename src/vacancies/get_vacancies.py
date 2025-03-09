@@ -1,16 +1,22 @@
 import asyncio
-from typing import List
-from src.new_vacancies_filter.new_vacancies_filter import NewVacanciesFilter
-from src.get_vacancies_collection.get_vacancies_collection_source import (
-    GetVacanciesCollectionSource,
-)
 import random
-from src.djinni.vacancies_djinni_source import VacanciesDjinniSource
-from src.dou.vacancies_dou_source import VacanciesDouSource
-from src.user_manager.user_source import UserSource
-from src.vacancies.get_vacancies_source import GetVacanciesSource
-from src.tg_message_manager.tg_message_manager import TgMessageManager
-from src.types.user_obj_type import UserType
+from typing import List
+
+from djinni.vacancies_djinni_source import VacanciesDjinniSource
+from dou.vacancies_dou_source import VacanciesDouSource
+from get_vacancies_collection.get_vacancies_collection_source import GetVacanciesCollectionSource
+from new_vacancies_filter.new_vacancies_filter import NewVacanciesFilter
+from tg_message_manager.tg_message_manager import TgMessageManager
+from user_manager.user_source import UserSource
+from vacancies.get_vacancies_source import GetVacanciesSource
+from vacancy_types.user_obj_type import UserType
+
+
+
+
+
+
+
 
 
 class GetVacancies(GetVacanciesSource):

@@ -1,6 +1,6 @@
 from typing import TypedDict
 from bson import ObjectId
-from src.types.category_obj_type import CategoryType
+from vacancy_types.category_obj_type import CategoryType
 
 
 class VacanciesFullType(TypedDict):

@@ -1,6 +1,8 @@
 from abc import ABC, abstractmethod
 from typing import List
-from src.types.user_obj_type import UserType
+
+from vacancy_types.user_obj_type import UserType
+
 
 
 class UserSource(ABC):

@@ -1,6 +1,9 @@
 from typing import List
-from src.user_manager.user_source import UserSource
-from src.types.user_obj_type import UserType
+
+from user_manager.user_source import UserSource
+from vacancy_types.user_obj_type import UserType
+
+
 
 
 class User(UserSource):

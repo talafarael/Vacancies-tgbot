@@ -1,8 +1,14 @@
 import asyncio
 from typing import List
 
-from src.types.user_obj_type import UserType
-from src.types.vacancies_dou_type import VacanciesScrapType
+from vacancy_types.user_obj_type import UserType
+from vacancy_types.vacancies_scrap_type import VacanciesScrapType
+
+
+
+
+
+
 
 
 class TgMessageManager:

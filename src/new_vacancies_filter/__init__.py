@@ -1,0 +1,1 @@
+from .new_vacancies_filter import NewVacanciesFilter

@@ -4,8 +4,11 @@ import requests
 import re
 import urllib.request
 from bs4 import BeautifulSoup
-from src.djinni.vacancies_djinni_source import VacanciesDjinniSource
-from src.types.vacancies_dou_type import VacanciesScrapType
+
+from djinni.vacancies_djinni_source import VacanciesDjinniSource
+from vacancy_types.vacancies_scrap_type import VacanciesScrapType
+
+
 
 
 class GetVacanciesDjinni(VacanciesDjinniSource):

@@ -1,8 +1,7 @@
 # from telethon import TelegramClient, events
 
-from src.get_vacancies_collection.get_vacancies_collection_source import (
-    GetVacanciesCollectionSource,
-)
+
+from get_vacancies_collection.get_vacancies_collection_source import GetVacanciesCollectionSource
 from telethon import Button
 
 

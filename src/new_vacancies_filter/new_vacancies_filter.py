@@ -1,5 +1,7 @@
 from typing import List, Tuple
-from src.types.vacancies_dou_type import VacanciesScrapType
+
+from vacancy_types.vacancies_scrap_type import VacanciesScrapType
+
 
 
 get_one_vacancies_type = Tuple[List[VacanciesScrapType], List[VacanciesScrapType]]

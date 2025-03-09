@@ -1,8 +1,9 @@
 from typing import List
-from src.category.get_category_source import GetCategorySource
-from src.types.collection import CollectionName
+from category.get_category_source import GetCategorySource
+from vacancy_types.category_obj_type import CategoryType
+from vacancy_types.collection import CollectionName
 
-from src.types.category_obj_type import CategoryType
+
 
 
 class GetCategory(GetCategorySource):

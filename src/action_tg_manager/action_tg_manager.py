@@ -1,5 +1,5 @@
-from src.user_manager.user import User
-from src.tg_message_manager.tg_message_manager import TgMessageManager
+from tg_message_manager.tg_message_manager import TgMessageManager
+from user_manager.user import User
 
 
 class ActionTgManager:
