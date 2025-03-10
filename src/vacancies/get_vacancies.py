@@ -45,10 +45,11 @@ class GetVacancies(GetVacanciesSource):
             list_vacancy = await self._newVacanciesFilter.filter_vacancies(
                 (dou_list, djinni_list)
             )
-
+            print(vacancy["_id"])
             users: List[UserType] = await self._userManager.user_vacancies_find(
                 vacancy["_id"]
             )
+            print(users)
             await self._tgMessageManager.user_vacancies_mailing_list(
                 users, list_vacancy
             )

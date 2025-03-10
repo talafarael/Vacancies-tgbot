@@ -12,10 +12,13 @@ class User(UserSource):
 
     async def user_vacancies_find(self, vacancy_id: str) -> List[UserType]:
         try:
-            collection = self._cluster.test.user
-            users = await collection.find({"vacancies": vacancy_id}).to_list(None)
+            print(f"vacancy_id ({type(vacancy_id)}): {vacancy_id}")
+            vacancy_id = str(vacancy_id)
+            users =await self._cluster.test.user.find({"vacancies": {"$in": [vacancy_id]}}).to_list(None)
+            print(users)
             return users
         except NameError:
+            print(NameError)
             return []
 
     async def get_user_with_filter(self, link):
