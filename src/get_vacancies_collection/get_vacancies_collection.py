@@ -1,9 +1,9 @@
 from typing import List
 from bson import ObjectId
-from get_vacancies_collection.get_vacancies_collection_source import GetVacanciesCollectionSource
+from get_vacancies_collection.get_vacancies_collection_source import (
+    GetVacanciesCollectionSource,
+)
 from vacancy_types.vacancies_full_obj_type import VacanciesFullType
-
-
 
 
 class GetVacancieCollection(GetVacanciesCollectionSource):

@@ -12,6 +12,7 @@ from tgbot_service.tgbot import TgBot
 from user_manager.user import User
 from connect_db.connect_db import connect_db
 from vacancies.get_vacancies import GetVacancies
+
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 
 from dotenv import load_dotenv
@@ -128,7 +129,7 @@ async def main():
 asyncio.run(main())
 
 
-#async def scrap():
+# async def scrap():
 #    cluster = await connect_db()
 #    getVacanciesDjinni = GetVacanciesDjinni()
 #    getVacanciesDou = GetVacanciesDou()

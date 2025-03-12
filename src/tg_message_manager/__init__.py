@@ -1,1 +1,1 @@
-from  .tg_message_manager import  TgMessageManager
+from .tg_message_manager import TgMessageManager

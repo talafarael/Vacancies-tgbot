@@ -9,8 +9,6 @@ from djinni.vacancies_djinni_source import VacanciesDjinniSource
 from vacancy_types.vacancies_scrap_type import VacanciesScrapType
 
 
-
-
 class GetVacanciesDjinni(VacanciesDjinniSource):
     async def get_djinni_vacancies(self, url: str) -> List[VacanciesScrapType]:
         try:

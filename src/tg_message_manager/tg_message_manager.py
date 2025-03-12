@@ -5,22 +5,16 @@ from vacancy_types.user_obj_type import UserType
 from vacancy_types.vacancies_scrap_type import VacanciesScrapType
 
 
-
-
-
-
-
-
 class TgMessageManager:
     def __init__(self, client):
         self._client = client
 
     async def user_vacancies_mailing_list(
         self, users: List[UserType], vacancies_lsit: List[VacanciesScrapType]
-):
+    ):
         tasks = []
         for vacancy in vacancies_lsit:
-            
+
             text = (
                 f"📌 *{vacancy['title']}*\n"
                 f"🏢 *Компания:* [{vacancy['company']}]({vacancy['company_link']})\n"

@@ -4,8 +4,6 @@ from user_manager.user_source import UserSource
 from vacancy_types.user_obj_type import UserType
 
 
-
-
 class User(UserSource):
     def __init__(self, cluster) -> None:
         self._cluster = cluster
@@ -14,7 +12,9 @@ class User(UserSource):
         try:
             print(f"vacancy_id ({type(vacancy_id)}): {vacancy_id}")
             vacancy_id = str(vacancy_id)
-            users =await self._cluster.test.user.find({"vacancies": {"$in": [vacancy_id]}}).to_list(None)
+            users = await self._cluster.test.user.find(
+                {"vacancies": {"$in": [vacancy_id]}}
+            ).to_list(None)
             print(users)
             return users
         except NameError:

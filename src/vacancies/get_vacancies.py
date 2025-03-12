@@ -4,19 +4,14 @@ from typing import List
 
 from djinni.vacancies_djinni_source import VacanciesDjinniSource
 from dou.vacancies_dou_source import VacanciesDouSource
-from get_vacancies_collection.get_vacancies_collection_source import GetVacanciesCollectionSource
+from get_vacancies_collection.get_vacancies_collection_source import (
+    GetVacanciesCollectionSource,
+)
 from new_vacancies_filter.new_vacancies_filter import NewVacanciesFilter
 from tg_message_manager.tg_message_manager import TgMessageManager
 from user_manager.user_source import UserSource
 from vacancies.get_vacancies_source import GetVacanciesSource
 from vacancy_types.user_obj_type import UserType
-
-
-
-
-
-
-
 
 
 class GetVacancies(GetVacanciesSource):

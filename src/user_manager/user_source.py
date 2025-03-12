@@ -4,7 +4,6 @@ from typing import List
 from vacancy_types.user_obj_type import UserType
 
 
-
 class UserSource(ABC):
     @abstractmethod
     async def user_vacancies_find(self, vacancy_id: str) -> List[UserType]:

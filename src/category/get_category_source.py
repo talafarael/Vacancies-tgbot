@@ -5,8 +5,6 @@ from vacancy_types.category_obj_type import CategoryType
 from vacancy_types.collection import CollectionName
 
 
-
-
 class GetCategorySource(ABC):
     @abstractmethod
     async def get_one(self, id: str, name_collection: CollectionName) -> CategoryType:
