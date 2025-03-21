@@ -43,7 +43,7 @@ class GetVacanciesDjinni(VacanciesDjinniSource):
             )
 
             link = title_element.get("href") if title_element else ""
-
+            print("work")
             company_element = item.find(class_="text-body js-analytics-event")
             company = company_element.text.strip() if company_element else ""
             company_link = company_element.get("href") if company_element else ""
@@ -53,10 +53,11 @@ class GetVacanciesDjinni(VacanciesDjinniSource):
 
             salary_element = item.find(class_="text-success text-nowrap")
             salary = salary_element.text.strip() if salary_element else ""
-
+# this i need upgrade 
             info_section = item.find(
                 class_="fw-medium d-flex flex-wrap align-items-center gap-1"
             )
+            print(info_section)
             location_element = (
                 info_section.find(class_="text-nowrap") if info_section else None
             )
@@ -80,3 +81,7 @@ class GetVacanciesDjinni(VacanciesDjinniSource):
             }
             arr_varancie.append(varancie_djinni)
         return arr_varancie
+    def get_parametr(self):
+        pass
+
+

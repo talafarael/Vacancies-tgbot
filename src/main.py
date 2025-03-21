@@ -1,6 +1,7 @@
 import asyncio
 import sys
 import os
+from get_page.get_page import GetPage
 from telethon import TelegramClient, events
 from action_tg_manager.action_tg_manager import ActionTgManager
 from djinni.get_djinni import GetVacanciesDjinni
@@ -83,7 +84,8 @@ async def main():
     get_vacancie_collection = GetVacancieCollection(cluster)
     tg_bot = TgBot(cluster, client, get_vacancie_collection)
     user = User(cluster)
-    get_vacancies_dou = GetVacanciesDou()
+    get_page=GetPage()
+    get_vacancies_dou = GetVacanciesDou(get_page)
     get_vacancies_djinni = GetVacanciesDjinni()
     new_vacancies_filter = NewVacanciesFilter(cluster)
     tg_message_manager = TgMessageManager(client)
@@ -126,7 +128,21 @@ async def main():
         await client.run_until_disconnected()
 
 
-asyncio.run(main())
+#asyncio.run(main())
+async def test():                                                              
+    print("suak")
+    client = TelegramClient("bot", os.getenv("API_ID"), os.getenv("API_HASH")) 
+    await client.start(bot_token=os.getenv("TOKEN"))                           
+    cluster = await connect_db()                                               
+    get_vacancie_collection = GetVacancieCollection(cluster)                   
+    tg_bot = TgBot(cluster, client, get_vacancie_collection)                   
+    user = User(cluster)                                                       
+    get_vacancies_djinni = GetVacanciesDjinni()                                
+    new_vacancies_filter = NewVacanciesFilter(cluster)                         
+    tg_message_manager = TgMessageManager(client)                              
+    await get_vacancies_djinni.get_djinni_vacancies("https://djinni.co/jobs/?primary_keyword=Java")
+asyncio.run(test()) 
+
 
 
 # async def scrap():
