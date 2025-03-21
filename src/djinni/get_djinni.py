@@ -1,3 +1,4 @@
+from enum import Enum
 import random
 from typing import List
 import requests
@@ -7,7 +8,24 @@ from bs4 import BeautifulSoup
 
 from djinni.vacancies_djinni_source import VacanciesDjinniSource
 from vacancy_types.vacancies_scrap_type import VacanciesScrapType
+class Language(Enum):
+      NoEnglish="No English"
+      BeginnerElementary="Beginner/Elementary"
+      PreIntermediate="Pre-Intermediate"
+      Intermediate="Intermediate"
+      UpperIntermediate="Upper-Intermediate"
+      AdvancedFluent="Advanced/Fluent"
+      
+    
+      
+    
+      
+    
+      
+    
 
+      
+    
 
 class GetVacanciesDjinni(VacanciesDjinniSource):
     async def get_djinni_vacancies(self, url: str) -> List[VacanciesScrapType]:
@@ -57,6 +75,7 @@ class GetVacanciesDjinni(VacanciesDjinniSource):
             info_section = item.find(
                 class_="fw-medium d-flex flex-wrap align-items-center gap-1"
             )
+            self.get_parametr(info_section)
             print(info_section)
             location_element = (
                 info_section.find(class_="text-nowrap") if info_section else None
@@ -81,7 +100,11 @@ class GetVacanciesDjinni(VacanciesDjinniSource):
             }
             arr_varancie.append(varancie_djinni)
         return arr_varancie
-    def get_parametr(self):
-        pass
+    def get_parametr(self,medium_div):
+        for span in medium_div.find_all("span", class_="text-nowrap"):
+            result = span.get_text(strip=True)
+            if(Language(result)):
+                print(Language(result))
+
 
 
