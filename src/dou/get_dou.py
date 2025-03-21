@@ -6,11 +6,12 @@ from vacancy_types.vacancies_scrap_type import VacanciesScrapType
 
 
 class GetVacanciesDou(VacanciesDouSource):
-    def __init__(self,get_page:GetPage) -> None:
-        self.get_page=get_page
+    def __init__(self, get_page: GetPage) -> None:
+        self.get_page = get_page
+
     async def get_duo_vacancies(self, url: str) -> List[VacanciesScrapType]:
         try:
-            driver=await self.get_page.get_page(url)
+            driver = await self.get_page.get_page(url)
 
             vacancies = []
             vacancy_elements = driver.find_elements(By.CLASS_NAME, "l-vacancy")

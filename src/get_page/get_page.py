@@ -5,11 +5,12 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
+
 class GetPage:
     def __init__(self) -> None:
         pass
 
-    async def get_page(self, url: str)-> webdriver.Chrome:
+    async def get_page(self, url: str) -> webdriver.Chrome:
         try:
             USER_AGENTS = [
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",

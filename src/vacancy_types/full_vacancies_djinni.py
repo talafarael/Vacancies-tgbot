@@ -1,5 +1,5 @@
-from typing import List, TypedDict
+from typing import TypedDict
 
 
 class UserType(TypedDict):
-
+    pass
