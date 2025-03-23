@@ -1,0 +1,2 @@
+class VacanciesType:
+    pass

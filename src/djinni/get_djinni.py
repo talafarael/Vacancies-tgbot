@@ -1,6 +1,5 @@
-from enum import Enum
 import random
-from typing import List, TypedDict
+from typing import List
 import requests
 import re
 import urllib.request
@@ -8,63 +7,9 @@ from bs4 import BeautifulSoup
 
 
 from djinni.vacancies_djinni_source import VacanciesDjinniSource
+from vacancy_types.job_requirements import JobRequirements
+from vacancy_types.job_requirements_enum import Editorial, Employment, Experience, Language, Region, TypeProdcut
 from vacancy_types.vacancies_scrap_type import VacanciesScrapType
-
-
-class ValidEnum(Enum):
-    @staticmethod
-    def is_valid(value):
-        return value in ValidEnum._value2member_map_
-
-
-class Language(ValidEnum):
-    NoEnglish = "No English"
-    BeginnerElementary = "Beginner/Elementary"
-    PreIntermediate = "Pre-Intermediate"
-    Intermediate = "Intermediate"
-    UpperIntermediate = "Upper-Intermediate"
-    AdvancedFluent = "Advanced/Fluent"
-
-
-class Experience(ValidEnum):
-    Бездосвіду = "Без досвіду"
-    рік1 = "1 рік"
-    роки2 = "2 роки"
-    роки3 = "3 роки"
-    роки4 = "4 роки"
-    років5 = "5 років"
-    років6 = "6 років"
-    років7 = "7 років"
-    років8 = "8 років"
-    років9 = "9 років"
-    років_та_більше10 = "10 років та більше"
-
-
-class Employment(ValidEnum):
-    Віддалена_робота = "Віддалена робота"
-    Part_time = "Part-time"
-    Офіс = "Офіс"
-
-
-class Region(ValidEnum):
-    Україна = "Україна"
-    Країни_ЄС = "Країни ЄС"
-    Інші_країни = "Інші країни"
-
-
-class Editorial(ValidEnum):
-    Вказана_зарплатна_вилка = "Вказана зарплатна вилка"
-    Ukrainian_Product = "Ukrainian Product 🇺🇦"
-    MilTech = "MilTech 🪖"
-    Mobilisation_Reservation = "Mobilisation reservation ⏳"
-
-
-class JobRequirements(TypedDict):
-    language: Language | None 
-    experience: Experience | None
-    employment: Employment| None
-    region: Region| None
-    editorial: Editorial| None
 
 
 class GetVacanciesDjinni(VacanciesDjinniSource):
@@ -115,7 +60,7 @@ class GetVacanciesDjinni(VacanciesDjinniSource):
             info_section = item.find(
                 class_="fw-medium d-flex flex-wrap align-items-center gap-1"
             )
-            self.get_parametr(info_section)
+            job_require_param=self.get_parametr(info_section)
             print(info_section)
             location_element = (
                 info_section.find(class_="text-nowrap") if info_section else None
@@ -147,18 +92,23 @@ class GetVacanciesDjinni(VacanciesDjinniSource):
              "experience":  None, 
              "employment":  None,  
              "region":  None,          
-             "editorial":  None    
+             "editorial":  None,    
+             "type_product":None
         }
         field_checks = {
             "language": Language,
             "experience": Experience,
             "employment": Employment,
             "region": Region,
-            "editorial": Editorial
+            "editorial": Editorial,
+            "type_prodcut":TypeProdcut
         }
         for span in medium_div.find_all("span", class_="text-nowrap"):
             result = span.get_text(strip=True)
             for field, FieldClass in field_checks.items():
-                if FieldClass.is_valid(result):
-                    jobRequirements[field] = FieldClass(result).value
-        return jobRequirements
+                normalize=self._normalize_region(result)
+                if FieldClass.is_valid(normalize):
+                    jobRequirements[field] = result
+        return JobRequirements
+    def _normalize_region(self,value):
+        return re.sub(r"\(.*?\)", "", value).strip()
