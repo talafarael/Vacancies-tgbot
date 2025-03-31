@@ -6,6 +6,7 @@ from .vacancies_obj_type import VacanciesObjType
 from .vacancies_scrap_type import VacanciesScrapType
 from .job_requirements_enum import Language, Experience, Employment, Region,Editorial,TypeProdcut
 from .job_requirements import JobRequirements
+from .vacancies_scrap_full_djinni_type import VacanciesScrapFullDjinniType
 __all__ = [
     "CategoryType",
     "CollectionName",
@@ -19,5 +20,6 @@ __all__ = [
     "Region",
     "Editorial",
     "TypeProdcut",
-    "JobRequirements"
+    "JobRequirements",
+    "VacanciesScrapFullDjinniType"
 ]

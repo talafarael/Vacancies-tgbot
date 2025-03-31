@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup
 from djinni.vacancies_djinni_source import VacanciesDjinniSource
 from vacancy_types.job_requirements import JobRequirements
 from vacancy_types.job_requirements_enum import Editorial, Employment, Experience, Language, Region, TypeProdcut
+from vacancy_types.vacancies_scrap_full_djinni_type import VacanciesScrapFullDjinniType
 from vacancy_types.vacancies_scrap_type import VacanciesScrapType
 
 
@@ -73,7 +74,7 @@ class GetVacanciesDjinni(VacanciesDjinniSource):
                 "",
             )
 
-            varancie_djinni: VacanciesScrapType = {
+            varancie_djinni: VacanciesScrapFullDjinniType = {
                 "title": title,
                 "description": description,
                 "link": f"https://djinni.co{link}",
@@ -86,7 +87,7 @@ class GetVacanciesDjinni(VacanciesDjinniSource):
             arr_varancie.append(varancie_djinni)
         return arr_varancie
 
-    def get_parametr(self, medium_div):
+    def get_parametr(self, medium_div)->JobRequirements:
         jobRequirements: JobRequirements={
              "language":  None,     
              "experience":  None, 
