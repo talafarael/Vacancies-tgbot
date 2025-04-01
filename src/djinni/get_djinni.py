@@ -14,7 +14,7 @@ from vacancy_types.vacancies_scrap_type import VacanciesScrapType
 
 
 class GetVacanciesDjinni(VacanciesDjinniSource):
-    async def get_djinni_vacancies(self, url: str) -> List[VacanciesScrapType]:
+    async def get_djinni_vacancies(self, url: str) -> List[VacanciesScrapFullDjinniType]:
         try:
             USER_AGENTS = [
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
@@ -62,7 +62,6 @@ class GetVacanciesDjinni(VacanciesDjinniSource):
                 class_="fw-medium d-flex flex-wrap align-items-center gap-1"
             )
             job_require_param=self.get_parametr(info_section)
-            print(info_section)
             location_element = (
                 info_section.find(class_="text-nowrap") if info_section else None
             )
@@ -83,6 +82,12 @@ class GetVacanciesDjinni(VacanciesDjinniSource):
                 "company_img": company_img,
                 "company_link": company_link,
                 "salary": salary,
+                "language":job_require_param["language"],
+                "experience":job_require_param["experience"], 
+                "employment":job_require_param["employment"],
+                "region":job_require_param["region"], 
+                "editorial":job_require_param["editorial"],
+                "type_product":job_require_param["type_product"]
             }
             arr_varancie.append(varancie_djinni)
         return arr_varancie
@@ -110,6 +115,6 @@ class GetVacanciesDjinni(VacanciesDjinniSource):
                 normalize=self._normalize_region(result)
                 if FieldClass.is_valid(normalize):
                     jobRequirements[field] = result
-        return JobRequirements
+        return jobRequirements
     def _normalize_region(self,value):
         return re.sub(r"\(.*?\)", "", value).strip()

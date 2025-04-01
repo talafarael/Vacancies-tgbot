@@ -1,6 +1,7 @@
 import asyncio
 import sys
 import os
+from connection import connect_db
 from get_page.get_page import GetPage
 from telethon import TelegramClient, events
 from action_tg_manager.action_tg_manager import ActionTgManager
@@ -11,7 +12,6 @@ from new_vacancies_filter.new_vacancies_filter import NewVacanciesFilter
 from tg_message_manager.tg_message_manager import TgMessageManager
 from tgbot_service.tgbot import TgBot
 from user_manager.user import User
-from connect_db.connect_db import connect_db
 from vacancies.get_vacancies import GetVacancies
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
@@ -71,9 +71,9 @@ url = "https://djinni.co/jobs/"
 #    results = await create_vacancies.create_vacancies(categories, "category")
 
 
-async def create_vacancies(cluster, getCategory):
-    create_data_for_bot = CreateDataForBot(cluster, getCategory)
-    await create_data_for_bot.create_vacancies()
+#async def create_vacancies(cluster, getCategory):
+#   create_data_for_bot = CreateDataForBot(cluster, getCategory)
+#   await create_data_for_bot.create_vacancies()
 
 
 # asyncio.run(create_data_for_bot())
@@ -145,8 +145,30 @@ async def test():
     )
 
 
-asyncio.run(test())
+#asyncio.run(test())
+import gspread
+from google.oauth2.service_account import Credentials
+scopes = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive"
+]
 
+json_path = os.path.abspath("./artful-journey-455514-e2-319e56628090.json")
+creds = Credentials.from_service_account_file(json_path, scopes=scopes)
+
+
+client = gspread.authorize(creds)
+
+# Открытие таблицы
+spreadsheet = client.open("python-data-vacancies")
+worksheet = spreadsheet.sheet1  # Выбираем первый лист
+
+# Чтение данных
+data = worksheet.get_all_records()
+print(data)
+
+# Запись данных
+worksheet.update("A1", [["Привет", "Мир"]]) 
 
 # async def scrap():
 #    cluster = await connect_db()
