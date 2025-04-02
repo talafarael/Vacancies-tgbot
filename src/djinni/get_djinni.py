@@ -8,13 +8,22 @@ from bs4 import BeautifulSoup
 
 from djinni.vacancies_djinni_source import VacanciesDjinniSource
 from vacancy_types.job_requirements import JobRequirements
-from vacancy_types.job_requirements_enum import Editorial, Employment, Experience, Language, Region, TypeProdcut
+from vacancy_types.job_requirements_enum import (
+    Editorial,
+    Employment,
+    Experience,
+    Language,
+    Region,
+    TypeProdcut,
+)
 from vacancy_types.vacancies_scrap_full_djinni_type import VacanciesScrapFullDjinniType
 from vacancy_types.vacancies_scrap_type import VacanciesScrapType
 
 
 class GetVacanciesDjinni(VacanciesDjinniSource):
-    async def get_djinni_vacancies(self, url: str) -> List[VacanciesScrapFullDjinniType]:
+    async def get_djinni_vacancies(
+        self, url: str
+    ) -> List[VacanciesScrapFullDjinniType]:
         try:
             USER_AGENTS = [
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
@@ -61,7 +70,7 @@ class GetVacanciesDjinni(VacanciesDjinniSource):
             info_section = item.find(
                 class_="fw-medium d-flex flex-wrap align-items-center gap-1"
             )
-            job_require_param=self.get_parametr(info_section)
+            job_require_param = self.get_parametr(info_section)
             location_element = (
                 info_section.find(class_="text-nowrap") if info_section else None
             )
@@ -82,24 +91,24 @@ class GetVacanciesDjinni(VacanciesDjinniSource):
                 "company_img": company_img,
                 "company_link": company_link,
                 "salary": salary,
-                "language":job_require_param["language"],
-                "experience":job_require_param["experience"], 
-                "employment":job_require_param["employment"],
-                "region":job_require_param["region"], 
-                "editorial":job_require_param["editorial"],
-                "type_product":job_require_param["type_product"]
+                "language": job_require_param["language"],
+                "experience": job_require_param["experience"],
+                "employment": job_require_param["employment"],
+                "region": job_require_param["region"],
+                "editorial": job_require_param["editorial"],
+                "type_product": job_require_param["type_product"],
             }
             arr_varancie.append(varancie_djinni)
         return arr_varancie
 
-    def get_parametr(self, medium_div)->JobRequirements:
-        jobRequirements: JobRequirements={
-             "language":  None,     
-             "experience":  None, 
-             "employment":  None,  
-             "region":  None,          
-             "editorial":  None,    
-             "type_product":None
+    def get_parametr(self, medium_div) -> JobRequirements:
+        jobRequirements: JobRequirements = {
+            "language": None,
+            "experience": None,
+            "employment": None,
+            "region": None,
+            "editorial": None,
+            "type_product": None,
         }
         field_checks = {
             "language": Language,
@@ -107,14 +116,15 @@ class GetVacanciesDjinni(VacanciesDjinniSource):
             "employment": Employment,
             "region": Region,
             "editorial": Editorial,
-            "type_prodcut":TypeProdcut
+            "type_prodcut": TypeProdcut,
         }
         for span in medium_div.find_all("span", class_="text-nowrap"):
             result = span.get_text(strip=True)
             for field, FieldClass in field_checks.items():
-                normalize=self._normalize_region(result)
+                normalize = self._normalize_region(result)
                 if FieldClass.is_valid(normalize):
                     jobRequirements[field] = result
         return jobRequirements
-    def _normalize_region(self,value):
+
+    def _normalize_region(self, value):
         return re.sub(r"\(.*?\)", "", value).strip()

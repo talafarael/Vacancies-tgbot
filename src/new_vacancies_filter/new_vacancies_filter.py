@@ -1,9 +1,12 @@
 from typing import List, Tuple
 
+from vacancy_types.vacancies_scrap_full_djinni_type import VacanciesScrapFullDjinniType
 from vacancy_types.vacancies_scrap_type import VacanciesScrapType
 
 
-get_one_vacancies_type = Tuple[List[VacanciesScrapType], List[VacanciesScrapType]]
+get_one_vacancies_type = Tuple[
+    List[VacanciesScrapFullDjinniType], List[VacanciesScrapFullDjinniType]
+]
 
 
 class NewVacanciesFilter:
@@ -12,7 +15,7 @@ class NewVacanciesFilter:
 
     async def filter_vacancies(
         self, get_one_vacancies_type: get_one_vacancies_type
-    ) -> List[VacanciesScrapType]:
+    ) -> List[VacanciesScrapFullDjinniType]:
         all_vacancies = get_one_vacancies_type[0] + get_one_vacancies_type[1]
         vacancy_links = [vac["link"] for vac in all_vacancies]
         existing_links = await self._cluster.test.filter.distinct(

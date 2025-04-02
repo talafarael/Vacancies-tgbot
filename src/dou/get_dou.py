@@ -2,6 +2,7 @@ from typing import List
 from dou.vacancies_dou_source import VacanciesDouSource
 from get_page.get_page import GetPage
 from selenium.webdriver.common.by import By
+from vacancy_types.vacancies_scrap_full_djinni_type import VacanciesScrapFullDjinniType
 from vacancy_types.vacancies_scrap_type import VacanciesScrapType
 
 
@@ -9,7 +10,9 @@ class GetVacanciesDou(VacanciesDouSource):
     def __init__(self, get_page: GetPage) -> None:
         self.get_page = get_page
 
-    async def get_duo_vacancies(self, url: str) -> List[VacanciesScrapType]:
+    async def get_duo_vacancies(
+        self, url: str, year: str
+    ) -> List[VacanciesScrapFullDjinniType]:
         try:
             driver = await self.get_page.get_page(url)
 
@@ -68,6 +71,7 @@ class GetVacanciesDou(VacanciesDouSource):
                         "company_link": company_link,
                         "company_img": company_img,
                         "salary": salary,
+                        "experience": year,
                     }
                 )
             driver.quit()

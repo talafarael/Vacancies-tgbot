@@ -67,7 +67,6 @@ class GetVacancieCollection(GetVacanciesCollectionSource):
             result = await self._cluster.test.vacancies.aggregate(pipeline).to_list(
                 length=100
             )
-            print(result)
             return result
         except NameError:
             print(NameError)

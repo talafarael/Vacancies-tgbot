@@ -8,6 +8,8 @@ from get_vacancies_collection.get_vacancies_collection_source import (
     GetVacanciesCollectionSource,
 )
 from new_vacancies_filter.new_vacancies_filter import NewVacanciesFilter
+from sheet_manager.djinni_sheet import DjinniSheet
+from sheet_manager.sheet_manager import SheetManager
 from tg_message_manager.tg_message_manager import TgMessageManager
 from user_manager.user_source import UserSource
 from vacancies.get_vacancies_source import GetVacanciesSource
@@ -24,6 +26,7 @@ class GetVacancies(GetVacanciesSource):
         userManager: UserSource,
         newVacanciesFilter: NewVacanciesFilter,
         tgMessageManager: TgMessageManager,
+        sheetManager: SheetManager,
     ):
         self.cluster = cluster
         self.getVacanciesDou = getVacanciesDou
@@ -32,18 +35,21 @@ class GetVacancies(GetVacanciesSource):
         self._userManager = userManager
         self._newVacanciesFilter = newVacanciesFilter
         self._tgMessageManager = tgMessageManager
+        self._sheetManager = sheetManager
 
     async def vacancies(self):
         vacancies_list = await self._getVacancieCollection.get_vacancies()
         for vacancy in vacancies_list:
             dou_list, djinni_list = await self.get_vacancy(vacancy)
             list_vacancy = await self._newVacanciesFilter.filter_vacancies(
-                (dou_list, djinni_list)
+                (djinni_list, dou_list)
             )
+            print(list_vacancy)
             users: List[UserType] = await self._userManager.user_vacancies_find(
                 vacancy["_id"]
             )
-            print(users)
+
+            await self._sheetManager.fill_sheet(list_vacancy)
             await self._tgMessageManager.user_vacancies_mailing_list(
                 users, list_vacancy
             )
@@ -70,7 +76,7 @@ class GetVacancies(GetVacanciesSource):
         url_djinni = f"https://djinni.co/jobs/?primary_keyword={category_djinni}&exp_level={year_djinni}"
         await asyncio.sleep(random.uniform(2, 5))
         dou, djinni = await asyncio.gather(
-            self.getVacanciesDou.get_duo_vacancies(url_dou),
+            self.getVacanciesDou.get_duo_vacancies(url_dou, year_dou),
             self.getVacanciesDjinni.get_djinni_vacancies(url_djinni),
         )
         return dou, djinni

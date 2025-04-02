@@ -2,7 +2,9 @@ import asyncio
 import sys
 import os
 from connection import connect_db
+from connection.connect_sheet import ConnectSheet
 from get_page.get_page import GetPage
+from sheet_manager.sheet_manager import SheetManager
 from telethon import TelegramClient, events
 from action_tg_manager.action_tg_manager import ActionTgManager
 from djinni.get_djinni import GetVacanciesDjinni
@@ -71,7 +73,7 @@ url = "https://djinni.co/jobs/"
 #    results = await create_vacancies.create_vacancies(categories, "category")
 
 
-#async def create_vacancies(cluster, getCategory):
+# async def create_vacancies(cluster, getCategory):
 #   create_data_for_bot = CreateDataForBot(cluster, getCategory)
 #   await create_data_for_bot.create_vacancies()
 
@@ -83,6 +85,8 @@ async def main():
     cluster = await connect_db()
     get_vacancie_collection = GetVacancieCollection(cluster)
     tg_bot = TgBot(cluster, client, get_vacancie_collection)
+    connect_sheet = ConnectSheet()
+    sheet_manager = SheetManager(connect_sheet)
     user = User(cluster)
     get_page = GetPage()
     get_vacancies_dou = GetVacanciesDou(get_page)
@@ -97,6 +101,7 @@ async def main():
         user,
         new_vacancies_filter,
         tg_message_manager,
+        sheet_manager,
     )
 
     action_tg_manager = ActionTgManager(user, tg_message_manager)
@@ -128,7 +133,9 @@ async def main():
         await client.run_until_disconnected()
 
 
-# asyncio.run(main())
+asyncio.run(main())
+
+
 async def test():
     print("suak")
     client = TelegramClient("bot", os.getenv("API_ID"), os.getenv("API_HASH"))
@@ -145,30 +152,7 @@ async def test():
     )
 
 
-#asyncio.run(test())
-import gspread
-from google.oauth2.service_account import Credentials
-scopes = [
-    "https://www.googleapis.com/auth/spreadsheets",
-    "https://www.googleapis.com/auth/drive"
-]
-
-json_path = os.path.abspath("./artful-journey-455514-e2-319e56628090.json")
-creds = Credentials.from_service_account_file(json_path, scopes=scopes)
-
-
-client = gspread.authorize(creds)
-
-# Открытие таблицы
-spreadsheet = client.open("python-data-vacancies")
-worksheet = spreadsheet.sheet1  # Выбираем первый лист
-
-# Чтение данных
-data = worksheet.get_all_records()
-print(data)
-
-# Запись данных
-worksheet.update("A1", [["Привет", "Мир"]]) 
+# asyncio.run(test())
 
 # async def scrap():
 #    cluster = await connect_db()

@@ -2,10 +2,13 @@ from abc import ABC, abstractmethod
 from types import NoneType
 from typing import List, Tuple
 
+from vacancy_types.vacancies_scrap_full_djinni_type import VacanciesScrapFullDjinniType
 from vacancy_types.vacancies_scrap_type import VacanciesScrapType
 
 
-get_one_vacancies_type = Tuple[List[VacanciesScrapType], List[VacanciesScrapType]]
+get_one_vacancies_type = Tuple[
+    List[VacanciesScrapFullDjinniType], List[VacanciesScrapFullDjinniType]
+]
 
 
 class GetVacanciesSource(ABC):
